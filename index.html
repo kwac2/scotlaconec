@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<script>
+  (function () {
+    var target = 'moziw.com/en';
+
+    if (location.hostname.replace(/^www\./, '') !== target) {
+      location.replace(
+        'https://' + target +
+        location.pathname +
+        location.search +
+        location.hash
+      );
+    }
+  })();
+</script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Electrician Connect | Find Electrical Help Near You</title>
+  <meta name="description" content="Tell us what electrical service you need and where you are located. We help connect customers with independent electricians serving their area.">
+  <meta name="robots" content="index, follow">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #172033;
+      background: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e7e9ee;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      text-decoration: none;
+      color: #102040;
+    }
+
+    .logo span {
+      color: #e5a400;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-button {
+      background: #f5b800;
+      padding: 11px 18px;
+      border-radius: 7px;
+    }
+
+    .hero {
+      background: #102040;
+      color: #ffffff;
+      padding: 80px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: #f5bd22;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 64px);
+      line-height: 1.05;
+      margin-bottom: 22px;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+      color: #d8deea;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 22px;
+      color: #e8ecf4;
+      font-size: 14px;
+    }
+
+    .hero-points span::before {
+      content: "✓";
+      color: #f5bd22;
+      font-weight: 800;
+      margin-right: 7px;
+    }
+
+    .form-card {
+      background: #ffffff;
+      color: #172033;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.2);
+    }
+
+    .form-card h2 {
+      font-size: 25px;
+      margin-bottom: 7px;
+    }
+
+    .form-card > p {
+      color: #657085;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid #ccd1db;
+      border-radius: 7px;
+      padding: 13px;
+      font: inherit;
+      background: #ffffff;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid #f5bd22;
+      border-color: transparent;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    button {
+      width: 100%;
+      border: 0;
+      background: #f5b800;
+      color: #172033;
+      padding: 15px 18px;
+      border-radius: 7px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #e7aa00;
+    }
+
+    .consent {
+      margin-top: 12px;
+      color: #737c8d;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 45px;
+    }
+
+    .section-heading h2 {
+      font-size: 36px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: #687286;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .step {
+      padding: 28px;
+      border: 1px solid #e5e8ed;
+      border-radius: 10px;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      background: #fff3c7;
+      color: #7a5800;
+      border-radius: 50%;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .step h3 {
+      margin-bottom: 9px;
+    }
+
+    .step p {
+      color: #687286;
+      font-size: 15px;
+    }
+
+    .services {
+      background: #f6f7f9;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .service {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 9px;
+      border: 1px solid #e6e8ec;
+    }
+
+    .service h3 {
+      font-size: 17px;
+      margin-bottom: 7px;
+    }
+
+    .service p {
+      font-size: 14px;
+      color: #697386;
+    }
+
+    .coverage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .coverage h2 {
+      font-size: 38px;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .coverage p {
+      color: #687286;
+      margin-bottom: 17px;
+    }
+
+    .states {
+      background: #102040;
+      color: #ffffff;
+      padding: 32px;
+      border-radius: 12px;
+    }
+
+    .states h3 {
+      margin-bottom: 15px;
+    }
+
+    .states p {
+      color: #cdd4e0;
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+
+    .notice {
+      background: #fff8df;
+      border: 1px solid #ecd788;
+      padding: 22px;
+      border-radius: 9px;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #514720;
+    }
+
+    .faq {
+      background: #f6f7f9;
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    details {
+      background: #ffffff;
+      border: 1px solid #e1e4e9;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      padding: 18px 20px;
+    }
+
+    summary {
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    details p {
+      color: #687286;
+      padding-top: 12px;
+      font-size: 14px;
+    }
+
+    .cta {
+      background: #102040;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: #cdd4e0;
+      margin-bottom: 25px;
+    }
+
+    .cta a {
+      display: inline-block;
+      background: #f5b800;
+      color: #172033;
+      padding: 14px 24px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    footer {
+      padding: 35px 0;
+      border-top: 1px solid #e5e7eb;
+      color: #687286;
+      font-size: 13px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+    }
+
+    #success {
+      display: none;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 7px;
+      background: #eaf7ed;
+      color: #216e39;
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid,
+      .coverage {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links a:not(.nav-button) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .hero {
+        padding: 55px 0;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .form-row,
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-card {
+        padding: 22px;
+      }
+
+      .footer-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="logo">Electrician<span>Connect</span></a>
+
+```
+<nav class="nav-links">
+  <a href="#how-it-works">How It Works</a>
+  <a href="#services">Services</a>
+  <a href="#coverage">Coverage</a>
+  <a href="#request" class="nav-button">Request Service</a>
+</nav>
+```
+
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container hero-grid">
+
+```
+<div>
+  <div class="eyebrow">Electrical Service Requests Across the USA</div>
+
+  <h1>Find Electrical Help in Your Area</h1>
+
+  <p class="hero-copy">
+    Tell us what you need and where you are located. We help connect
+    homeowners and businesses with independent electricians serving
+    their area.
+  </p>
+
+  <div class="hero-points">
+    <span>Service requests nationwide</span>
+    <span>Local availability matching</span>
+    <span>No obligation to submit a request</span>
+  </div>
+</div>
+
+<div class="form-card" id="request">
+
+  <h2>Request an Electrician</h2>
+  <p>Enter your information so we can process your service request.</p>
+
+  <form id="leadForm">
+
+    <div class="form-row">
+      <div class="field">
+        <label for="firstName">First Name</label>
+        <input id="firstName" name="firstName" type="text" required>
+      </div>
+
+      <div class="field">
+        <label for="zip">ZIP Code</label>
+        <input
+          id="zip"
+          name="zip"
+          type="text"
+          inputmode="numeric"
+          pattern="[0-9]{5}"
+          maxlength="5"
+          placeholder="10001"
+          required
+        >
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="service">Type of Electrical Service</label>
+
+      <select id="service" name="service" required>
+        <option value="">Select a service</option>
+        <option>Electrical Troubleshooting</option>
+        <option>Outlets & Switches</option>
+        <option>Lighting Installation</option>
+        <option>Electrical Panel Service</option>
+        <option>Wiring & Rewiring</option>
+        <option>Ceiling Fan Installation</option>
+        <option>EV Charger Installation</option>
+        <option>Other Electrical Service</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone</label>
+        <input id="phone" name="phone" type="tel" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="details">What do you need help with?</label>
+      <textarea
+        id="details"
+        name="details"
+        placeholder="Briefly describe the electrical work you need."
+      ></textarea>
+    </div>
+
+    <button type="submit">Submit Service Request</button>
+
+    <p class="consent">
+      By submitting this form, you authorize us to process the information
+      you provide for the purpose of responding to your service request and
+      connecting you with an independent service provider where available.
+      Submission of a request does not constitute a confirmed appointment.
+    </p>
+
+    <div id="success">
+      Thank you. Your request has been received for this demonstration.
+    </div>
+
+  </form>
+</div>
+```
+
+  </div>
+</section>
+
+<section id="how-it-works">
+  <div class="container">
+
+```
+<div class="section-heading">
+  <h2>How It Works</h2>
+  <p>
+    A straightforward way to submit an electrical service request and
+    check for providers serving your area.
+  </p>
+</div>
+
+<div class="steps">
+
+  <article class="step">
+    <div class="step-number">1</div>
+    <h3>Tell Us What You Need</h3>
+    <p>
+      Provide your ZIP code, contact information and a short description
+      of the electrical service you are looking for.
+    </p>
+  </article>
+
+  <article class="step">
+    <div class="step-number">2</div>
+    <h3>We Check Availability</h3>
+    <p>
+      Your request can be routed according to your location and the type
+      of electrical work requested.
+    </p>
+  </article>
+
+  <article class="step">
+    <div class="step-number">3</div>
+    <h3>Get Connected</h3>
+    <p>
+      If a participating independent electrician is available, you may
+      receive information about the next step by email, phone or directly
+      from the service provider.
+    </p>
+  </article>
+
+</div>
+```
+
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+
+```
+<div class="section-heading">
+  <h2>Common Electrical Service Requests</h2>
+  <p>
+    Submit a request for common residential and commercial electrical work.
+    Service availability varies by location and provider.
+  </p>
+</div>
+
+<div class="service-grid">
+
+  <article class="service">
+    <h3>Electrical Troubleshooting</h3>
+    <p>Help locating the cause of common electrical issues.</p>
+  </article>
+
+  <article class="service">
+    <h3>Outlets & Switches</h3>
+    <p>Requests involving outlets, switches and related components.</p>
+  </article>
+
+  <article class="service">
+    <h3>Lighting</h3>
+    <p>Indoor and outdoor lighting installation and electrical work.</p>
+  </article>
+
+  <article class="service">
+    <h3>Electrical Panels</h3>
+    <p>Panel inspection, repair, replacement and upgrade requests.</p>
+  </article>
+
+  <article class="service">
+    <h3>Wiring</h3>
+    <p>New wiring, rewiring and electrical circuit work.</p>
+  </article>
+
+  <article class="service">
+    <h3>Ceiling Fans</h3>
+    <p>Electrical installation and replacement requests for ceiling fans.</p>
+  </article>
+
+  <article class="service">
+    <h3>EV Chargers</h3>
+    <p>Requests related to residential electric vehicle charging equipment.</p>
+  </article>
+
+  <article class="service">
+    <h3>Other Electrical Work</h3>
+    <p>Describe your project if it does not fit one of the listed categories.</p>
+  </article>
+
+</div>
+```
+
+  </div>
+</section>
+
+<section id="coverage">
+  <div class="container coverage">
+
+```
+<div>
+  <div class="eyebrow">Nationwide Request Coverage</div>
+
+  <h2>Submit a Request From Anywhere in the United States</h2>
+
+  <p>
+    ElectricianConnect is designed to process service requests from
+    customers throughout the United States.
+  </p>
+
+  <p>
+    Your ZIP code helps identify the geographic area in which service is
+    requested. Actual provider participation, availability and service
+    areas vary by location.
+  </p>
+
+  <div class="notice">
+    <strong>Important:</strong> Submitting a request does not create an
+    appointment or guarantee that an electrician will be available.
+    An appointment exists only after the relevant parties confirm it.
+  </div>
+</div>
+
+<div class="states">
+  <h3>Local Matching by ZIP Code</h3>
+  <p>
+    Instead of asking you to search through providers across the country,
+    the request process uses your location and requested service category
+    to determine where the inquiry should be directed.
+  </p>
+</div>
+```
+
+  </div>
+</section>
+
+<section class="faq">
+  <div class="container">
+
+```
+<div class="section-heading">
+  <h2>Frequently Asked Questions</h2>
+</div>
+
+<div class="faq-list">
+
+  <details>
+    <summary>Does submitting the form confirm an appointment?</summary>
+    <p>
+      No. The form submits a service request. Any appointment must be
+      separately confirmed after provider availability is determined.
+    </p>
+  </details>
+
+  <details>
+    <summary>Who performs the electrical work?</summary>
+    <p>
+      Electrical work is performed by independent service providers.
+      ElectricianConnect is intended to facilitate service requests and
+      connections between customers and providers.
+    </p>
+  </details>
+
+  <details>
+    <summary>How much will electrical service cost?</summary>
+    <p>
+      Pricing depends on the provider, location, scope of work, materials
+      and other project-specific factors. Any pricing should be discussed
+      directly with the service provider.
+    </p>
+  </details>
+
+  <details>
+    <summary>Is service available in every ZIP code?</summary>
+    <p>
+      Requests may be submitted from across the United States, but provider
+      availability and individual service areas vary.
+    </p>
+  </details>
+
+  <details>
+    <summary>What happens after I submit my request?</summary>
+    <p>
+      Your information can be used to process the inquiry and determine
+      whether an appropriate participating provider is available for the
+      requested location and service.
+    </p>
+  </details>
+
+</div>
+```
+
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Need Electrical Help?</h2>
+    <p>Tell us what service you need and where the work is located.</p>
+    <a href="#request">Request an Electrician</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+```
+<div>
+  © <span id="year"></span> ElectricianConnect
+</div>
+
+<div class="footer-links">
+  <a href="privacy-policy.html">Privacy Policy</a>
+  <a href="terms-of-use.html">Terms of Use</a>
+  <a href="mailto:info@example.com">Contact</a>
+</div>
+```
+
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.getElementById("leadForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    document.getElementById("success").style.display = "block";
+  });
+</script>
+
+</body>
+</html>
